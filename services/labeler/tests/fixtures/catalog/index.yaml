@@ -1,0 +1,12 @@
+catalog_version: "test.1"
+sets:
+  base:
+    description: Flags shared by all industries
+    flags: [TEST_FLAG_A, TEST_FLAG_B]
+  extra:
+    description: Additional flags
+    flags: [TEST_FLAG_C]
+  telco:
+    description: Telco offer
+    includes: [base, extra]
+    flags: [TEST_FLAG_A]

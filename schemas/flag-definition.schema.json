@@ -1,0 +1,56 @@
+{
+  "additionalProperties": false,
+  "description": "A single flag.\n\nThe assessment stage (before / after purchase) and the data a flag needs are deliberately\nnot part of the definition: the stage is a run parameter and the model fetches data via tools.",
+  "properties": {
+    "code": {
+      "description": "Flag code: uppercase letters, digits and underscores; equals the file name.",
+      "pattern": "^[A-Z][A-Z0-9_]*$",
+      "title": "Code",
+      "type": "string"
+    },
+    "version": {
+      "description": "Definition version; bump whenever what the flag detects changes.",
+      "minimum": 1,
+      "title": "Version",
+      "type": "integer"
+    },
+    "flag_when": {
+      "description": "One-sentence, human-readable description of when the flag fires.",
+      "minLength": 1,
+      "title": "Flag When",
+      "type": "string"
+    },
+    "severity": {
+      "description": "Default severity in the base profile.",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "title": "Severity",
+      "type": "string"
+    },
+    "instructions": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Instructions for the model. Without them the flag is not executed yet.",
+      "title": "Instructions"
+    }
+  },
+  "required": [
+    "code",
+    "version",
+    "flag_when",
+    "severity"
+  ],
+  "title": "FlagDefinition",
+  "type": "object"
+}

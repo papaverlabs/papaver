@@ -1,0 +1,64 @@
+{
+  "$defs": {
+    "FlagSet": {
+      "additionalProperties": false,
+      "description": "A named list of flags. May include other sets.",
+      "properties": {
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "flags": {
+          "description": "Flag codes in execution order.",
+          "items": {
+            "pattern": "^[A-Z][A-Z0-9_]*$",
+            "type": "string"
+          },
+          "title": "Flags",
+          "type": "array"
+        },
+        "includes": {
+          "description": "Sets included as a whole.",
+          "items": {
+            "pattern": "^[a-z0-9][a-z0-9-]*$",
+            "type": "string"
+          },
+          "title": "Includes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "description"
+      ],
+      "title": "FlagSet",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Contents of index.yaml.",
+  "properties": {
+    "catalog_version": {
+      "description": "E.g. \"2026.11\". Quote it in YAML, otherwise it is a number.",
+      "minLength": 1,
+      "title": "Catalog Version",
+      "type": "string"
+    },
+    "sets": {
+      "minProperties": 1,
+      "patternProperties": {
+        "^[a-z0-9][a-z0-9-]*$": {
+          "$ref": "#/$defs/FlagSet"
+        }
+      },
+      "title": "Sets",
+      "type": "object"
+    }
+  },
+  "required": [
+    "catalog_version",
+    "sets"
+  ],
+  "title": "CatalogIndex",
+  "type": "object"
+}

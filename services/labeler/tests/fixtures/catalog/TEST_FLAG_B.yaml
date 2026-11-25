@@ -1,0 +1,4 @@
+code: TEST_FLAG_B
+version: 1
+flag_when: przykładowa flaga B
+severity: low

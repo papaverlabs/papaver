@@ -1,0 +1,6 @@
+code: TEST_FLAG_A
+version: 1
+flag_when: przykładowa flaga A
+severity: medium
+instructions: |
+  Przykładowa instrukcja dla modelu.

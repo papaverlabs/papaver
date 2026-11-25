@@ -1,0 +1,4 @@
+code: TEST_FLAG_C
+version: 1
+flag_when: przykładowa flaga C
+severity: low
